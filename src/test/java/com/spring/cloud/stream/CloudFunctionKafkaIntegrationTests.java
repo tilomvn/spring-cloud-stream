@@ -50,15 +50,15 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 //@Disabled
 class CloudFunctionKafkaIntegrationTests {
 
-    private static final String INPUT_TOPIC = "coinexchangedIn";
-    private static final String OUTPUT_TOPIC = "coinexchangeOut";
-    private static final String GROUP_NAME = "coinexchangeGroup";
+    final String INPUT_TOPIC = "coinexchangedIn";
+    final String OUTPUT_TOPIC = "coinexchangeOut";
+    final String GROUP_NAME = "coinexchangeGroup";
 
     @Autowired
-    private ObjectMapper objectMapper;
+    ObjectMapper objectMapper;
 
     @Autowired
-    private EmbeddedKafkaBroker embeddedKafkaBroker;
+    EmbeddedKafkaBroker embeddedKafkaBroker;
 
     @MockBean
     private CoinbaseExchangeService coinbaseExchangeService;
