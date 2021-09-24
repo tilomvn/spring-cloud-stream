@@ -1,4 +1,4 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.augen.test.cryptocurrencyexchange.service.CoinbaseExchangeService;
-import com.augen.test.cryptocurrencyexchange.dto.CoinbaseExchange;
-import com.augen.test.cryptocurrencyexchange.dto.Data;
-
 import org.springframework.boot.test.mock.mockito.MockBean;
-import com.augen.test.cryptocurrencyexchange.config.ProfitFactor;
-import com.augen.test.cryptocurrencyexchange.service.SpotPriceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -24,10 +18,17 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.augen.test.cryptocurrencyexchange.dto.SpotPrice;
 import org.springframework.web.client.RestClientException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.cloud.stream.CryptoCurrencyExchangeApplication;
+import com.spring.cloud.stream.config.ProfitFactor;
+import com.spring.cloud.stream.dto.CoinbaseExchange;
+import com.spring.cloud.stream.dto.Data;
+import com.spring.cloud.stream.dto.SpotPrice;
+import com.spring.cloud.stream.service.CoinbaseExchangeService;
+import com.spring.cloud.stream.service.SpotPriceService;
+
 import org.junit.jupiter.api.Disabled;
 
 @SpringBootTest(classes = {CryptoCurrencyExchangeApplication.class})

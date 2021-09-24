@@ -1,49 +1,42 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.augen.test.cryptocurrencyexchange.service.CoinbaseExchangeService;
-import com.augen.test.cryptocurrencyexchange.dto.CoinbaseExchange;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.util.UUID;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
-
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
+import java.util.function.Function;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.cloud.stream.CryptoCurrencyExchangeApplication;
+import com.spring.cloud.stream.dto.CoinbaseExchange;
+import com.spring.cloud.stream.service.CoinbaseExchangeService;
+
+import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 
 @SpringBootTest(classes = {CryptoCurrencyExchangeApplication.class})
-@AutoConfigureMockMvc
 @Disabled
-class CloudFunctionWebTests {
+class CloudFunctionTests {
 
     @MockBean
     private CoinbaseExchangeService coinbaseExchangeService;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private Function<String, String> coinexchange;
 
     @Autowired
-	private MockMvc mockMvc;
+    private ObjectMapper objectMapper;
 
     @Test
-    void coinexchangeCloudFunctionWebTest() throws Exception {
+    void coinexchangeCloudFunctionTest() throws Exception {
         String input = "buy/NZD/2";
 
         CoinbaseExchange coinbaseExchange = new CoinbaseExchange();
@@ -57,9 +50,9 @@ class CloudFunctionWebTests {
 
         when(coinbaseExchangeService.coinExchange(eq(input))).thenReturn(jsonMessage);
 
-        MvcResult mvcResult = mockMvc.perform(get("/coinexchange/buy/NZD/2")).andExpect(status().isOk()).andReturn();
+        String outMessage = coinexchange.apply(input);
 
-        mockMvc.perform(asyncDispatch(mvcResult)).andExpect(content().string(jsonMessage));
+        assertEquals(jsonMessage, outMessage);
 
         verify(coinbaseExchangeService, times(1)).coinExchange(eq(input));
     }

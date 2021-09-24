@@ -1,14 +1,15 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.annotation.Bean;
-import com.augen.test.cryptocurrencyexchange.service.CoinbaseExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.function.Function;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import com.spring.cloud.stream.service.CoinbaseExchangeService;
 
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.KeyValue;
@@ -23,13 +24,6 @@ public class CryptoCurrencyExchangeApplication {
 
     @Autowired
     public CoinbaseExchangeService coinbaseExchangeService;
-
-    //@Bean
-    //public Function<String, String> coinexchange() {//function web
-    //    return (input) -> {
-    //         return coinbaseExchangeService.coinExchange(input);
-    //    };
-    //}
 
     //processor: listening msg from producer and send msg to consumer as producer
     @Bean

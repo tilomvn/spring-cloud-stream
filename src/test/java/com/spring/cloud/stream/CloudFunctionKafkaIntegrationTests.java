@@ -1,4 +1,4 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.junit.jupiter.api.Test;
@@ -16,6 +16,9 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.cloud.stream.CryptoCurrencyExchangeApplication;
+import com.spring.cloud.stream.dto.CoinbaseExchange;
+import com.spring.cloud.stream.service.CoinbaseExchangeService;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -24,14 +27,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.augen.test.cryptocurrencyexchange.dto.CoinbaseExchange;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 
 import java.util.UUID;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import com.augen.test.cryptocurrencyexchange.service.CoinbaseExchangeService;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;

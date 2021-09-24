@@ -1,4 +1,4 @@
-package com.augen.test.cryptocurrencyexchange.apiclient;
+package com.spring.cloud.stream.apiclient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

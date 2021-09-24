@@ -1,28 +1,29 @@
-package com.augen.test.cryptocurrencyexchange.service;
+package com.spring.cloud.stream.service;
 
-import com.augen.test.cryptocurrencyexchange.apiclient.ApiClient;
+//import com.augen.test.cryptocurrencyexchange.apiclient.ApiClient;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.augen.test.cryptocurrencyexchange.config.ProfitFactor;
-import com.augen.test.cryptocurrencyexchange.dto.CoinbaseExchange;
-import com.augen.test.cryptocurrencyexchange.dto.SpotPrice;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.cloud.stream.config.ProfitFactor;
+import com.spring.cloud.stream.dto.CoinbaseExchange;
+import com.spring.cloud.stream.dto.SpotPrice;
 
 import java.util.UUID;
 
 import java.math.BigDecimal;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 public class CoinbaseExchangeService {
 
+	Logger log = LoggerFactory.getLogger(getClass());
+	
     public static final String errorsMessageFormat = "{\"errors\":[{\"id\":\"%s\",\"message\":\"%s\"}]}";
 
     @Value("${coinbase.api.endpoint:https://api.coinbase.com/v2/}")
@@ -37,8 +38,8 @@ public class CoinbaseExchangeService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private ApiClient apiClient;
+    //@Autowired
+    //private ApiClient apiClient;
 
     public String coinExchange(String input) {
         String errorMessage = "";

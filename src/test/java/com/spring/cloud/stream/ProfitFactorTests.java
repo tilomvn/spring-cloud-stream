@@ -1,4 +1,4 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,8 @@ import org.springframework.boot.test.system.CapturedOutput;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.augen.test.cryptocurrencyexchange.config.ProfitFactor;
+import com.spring.cloud.stream.CryptoCurrencyExchangeApplication;
+import com.spring.cloud.stream.config.ProfitFactor;
 
 import java.util.List;
 import java.util.Arrays;

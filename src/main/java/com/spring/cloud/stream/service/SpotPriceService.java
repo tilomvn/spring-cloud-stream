@@ -1,23 +1,24 @@
-package com.augen.test.cryptocurrencyexchange.service;
+package com.spring.cloud.stream.service;
 
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.augen.test.cryptocurrencyexchange.apiclient.ApiClient;
-import com.augen.test.cryptocurrencyexchange.dto.SpotPrice;
-import com.augen.test.cryptocurrencyexchange.dto.CurrencySpotPrice;
+import com.spring.cloud.stream.apiclient.ApiClient;
+import com.spring.cloud.stream.dto.CurrencySpotPrice;
+import com.spring.cloud.stream.dto.SpotPrice;
 
 import java.util.Map;
 import java.util.HashMap;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
 public class SpotPriceService {
 
+	Logger log = LoggerFactory.getLogger(getClass());
+	
     private Map<String, CurrencySpotPrice> spotPriceMap = new HashMap<>();
 
     @Value("${coinbase.api.endpoint:https://api.coinbase.com/v2/}")

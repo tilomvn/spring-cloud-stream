@@ -1,12 +1,15 @@
-package com.augen.test.cryptocurrencyexchange;
+package com.spring.cloud.stream;
 
-import com.augen.test.cryptocurrencyexchange.apiclient.ApiClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.augen.test.cryptocurrencyexchange.service.SpotPriceService;
+import com.spring.cloud.stream.CryptoCurrencyExchangeApplication;
+import com.spring.cloud.stream.apiclient.ApiClient;
+import com.spring.cloud.stream.dto.Data;
+import com.spring.cloud.stream.dto.SpotPrice;
+import com.spring.cloud.stream.service.SpotPriceService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,10 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 
 import org.springframework.boot.test.system.CapturedOutput;
-
-import com.augen.test.cryptocurrencyexchange.dto.Data;
-import com.augen.test.cryptocurrencyexchange.dto.SpotPrice;
-
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.ArgumentMatchers.any;
