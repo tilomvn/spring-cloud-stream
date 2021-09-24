@@ -22,7 +22,7 @@ public class CryptoCurrencyExchangeApplication {
 	}
 
     @Autowired
-    public CoinbaseExchangeService coinbaseExchangeService;
+    CoinbaseExchangeService coinbaseExchangeService;
 
     //processor: listening msg from producer and send msg to consumer as producer
     @Bean

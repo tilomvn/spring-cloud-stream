@@ -47,7 +47,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ExtendWith({SpringExtension.class})
 @SpringBootTest(classes = {CryptoCurrencyExchangeApplication.class}, properties = {"spring.profiles.active=default"})
 @EmbeddedKafka(topics = {"coinexchangedIn", "coinexchangeOut"}, bootstrapServersProperty = "spring.kafka.bootstrap-servers")
-@Disabled
+//@Disabled
 class CloudFunctionKafkaIntegrationTests {
 
     private static final String INPUT_TOPIC = "coinexchangedIn";
